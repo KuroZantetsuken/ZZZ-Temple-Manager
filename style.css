@@ -1,0 +1,117 @@
+/* Font definition */
+@font-face {
+    font-family: 'CustomFont'; /* I've named it CustomFont, you can name it anything */
+    src: url('en-us.ttf') format('truetype');
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'CustomFont', sans-serif;
+    background-color: #2d5357; /* Dark teal background */
+    color: white;
+}
+
+.background-container {
+    background-color: #d47b4b; /* Orange top section */
+    width: 100%;
+    min-height: 100vh;
+}
+
+.header-section {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-card {
+    background-color: #d4d1c4;
+    border-radius: 16px;
+    padding: 20px 40px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    border: 1px solid white;
+}
+
+.title-card h1 {
+    font-size: 64px;
+    color: #705a49;
+    margin: 0 0 20px 0;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.custom-dropdown {
+    background-color: #9b9085;
+    color: white;
+    font-family: 'CustomFont', sans-serif;
+    font-size: 24px;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.results-section {
+    background-color: #2d5357; /* Dark teal background for results */
+    padding: 40px 20px;
+}
+
+.placeholder-text {
+    text-align: center;
+    font-size: 24px;
+    color: #eadab9;
+}
+
+.item-card {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto 25px auto;
+    background-color: #63ac94; /* Teal card header */
+    border-radius: 8px;
+    border: 1px solid white;
+    overflow: hidden;
+}
+
+.item-image-container {
+    background-color: #262934;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-image {
+    width: 100px;
+    height: auto;
+}
+
+.item-details {
+    padding: 15px 25px;
+    flex-grow: 1;
+}
+
+.item-name {
+    font-size: 37px;
+    margin: 0 0 10px 0;
+}
+
+.item-zone-container {
+    background-color: #eadab9; /* Light card background */
+    border: 1px solid white;
+    border-radius: 25px;
+    padding: 10px 30px;
+    display: inline-block;
+}
+
+.item-zone {
+    font-size: 48px;
+    color: #705a49;
+    margin: 0;
+}
