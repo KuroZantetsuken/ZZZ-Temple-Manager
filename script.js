@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="item-details">
                             <h2 class="item-name">${item.name}</h2>
                             <div class="item-zone-container">
-                                <p class="item-zone">${item.zone_name}</p>
+                                <p class="item-zone">Former Research Center ${item.zone}</p>
                             </div>
                         </div>
                     </div>
