@@ -1,2 +1,3 @@
-# ZZZ-Temple-Manager
-A tool to maximize ZZZ Temple sales based on Trends
+# [Website](https://kurozantetsuken.github.io/ZZZ-Temple-Manager/)
+
+Data and inspiration: https://www.reddit.com/1ld05he/
