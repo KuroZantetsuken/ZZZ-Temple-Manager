@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown2 = document.getElementById('dropdown2');
     const resultsSection = document.getElementById('results-section');
     let data = null;
-
-    // Fetch the JSON data
     fetch('data.json')
         .then(response => response.json())
         .then(jsonData => {
@@ -16,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error loading data:', error);
             resultsSection.innerHTML = '<p class="placeholder-text">Error: Could not load data.json</p>';
         });
-
     function populateDropdowns() {
         const categories = data.categories;
         for (const id in categories) {
@@ -26,39 +23,31 @@ document.addEventListener('DOMContentLoaded', () => {
             dropdown2.add(option2);
         }
     }
-
     function addEventListeners() {
         dropdown1.addEventListener('change', lookupAndDisplay);
         dropdown2.addEventListener('change', lookupAndDisplay);
     }
-
     function lookupAndDisplay() {
         const val1 = dropdown1.value;
         const val2 = dropdown2.value;
-
-        // Clear results if dropdowns are not selected or are the same
         if (!val1 || !val2 || val1 === val2) {
             resultsSection.innerHTML = '<p class="placeholder-text">Please select two different trends to see the results.</p>';
             return;
         }
-
-        // Check for the combination in both orders (e.g., 5-1 and 1-5)
         let itemIds = null;
         if (data.lookup[val1] && data.lookup[val1][val2]) {
             itemIds = data.lookup[val1][val2];
         } else if (data.lookup[val2] && data.lookup[val2][val1]) {
             itemIds = data.lookup[val2][val1];
         }
-
         if (itemIds) {
             displayResults(itemIds);
         } else {
             resultsSection.innerHTML = '<p class="placeholder-text">No data found for this combination.</p>';
         }
     }
-
     function displayResults(itemIds) {
-        resultsSection.innerHTML = ''; // Clear previous results
+        resultsSection.innerHTML = '';
         itemIds.forEach(id => {
             const item = data.items[id];
             if (item) {
@@ -68,11 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="item-image-container">
                             <img src="${imageUrl}" alt="${item.name}" class="item-image">
                         </div>
-                        <div class="item-details">
-                            <h2 class="item-name">${item.name}</h2>
-                            <div class="item-zone-container">
-                                <p class="item-zone">Former Research Center ${item.zone}</p>
-                            </div>
+                        <div class="item-name-container">
+                            <p class="item-name">${item.name}</p>
+                        </div>
+                        <div class="item-zone-container">
+                            <p class="item-zone">Former Research Center ${item.zone}</p>
                         </div>
                     </div>
                 `;

@@ -1,64 +1,102 @@
-/* Font definition */
 @font-face {
-    font-family: 'CustomFont'; /* I've named it CustomFont, you can name it anything */
+    font-family: 'ZZZ';
     src: url('en-us.ttf') format('truetype');
 }
-
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'CustomFont', sans-serif;
-    background-color: #2d5357; /* Dark teal background */
-    color: white;
+html {
+    height: 100%;
 }
 
-.background-container {
-    background-color: #d47b4b; /* Orange top section */
+body {
+    bottom: 0px;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'ZZZ', sans-serif;
+    color: white;
+    color-scheme: dark;
+    background:
+    linear-gradient(0deg, rgba(45, 83, 87, 0.75), rgba(45, 83, 87, 1)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: 128px;
 }
 
 .header-section {
-    padding: 40px 20px;
+    padding: 120px 0 80px 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 4px 8px);
+    background:
+    linear-gradient(0deg, rgba(212, 123, 75, 0.75), rgba(212, 123, 75, 1)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-size: 128px;
+}
+
+.jagged-border {
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -40px;
+    width: 100%;
+    height: 40px;
+  }
 }
 
 .title-card {
-    background-color: #d4d1c4;
-    border-radius: 16px;
-    padding: 20px 40px;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    border: 1px solid white;
+    padding: 20px 0 40 00px;
+    border-radius: 0 0 10px 10px;
+    filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 4px 8px);
+    background:
+    linear-gradient(0deg, rgba(212, 209, 196, 0.75), rgba(212, 209, 196, 1)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-size: 128px;
+}
+
+.title-card:before {
+    background:
+      linear-gradient(
+        45deg, transparent 33.333%,
+        #d4d1c4 33.333%, #d4d1c4 66.667%,
+        transparent 66.667%
+      ),
+      linear-gradient(
+        -45deg, transparent 33.333%,
+        #d4d1c4 33.333%, #d4d1c4 66.667%,
+        transparent 66.667%
+      );
+    background-size: 40px 80px;
 }
 
 .title-card h1 {
     font-size: 64px;
     color: #705a49;
-    margin: 0 0 20px 0;
+    margin: 20px 0 0 0;
+    filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 0px 32px);
 }
 
 .dropdown-container {
     display: flex;
     justify-content: center;
     gap: 20px;
+    padding: 40px;
 }
 
-.custom-dropdown {
-    background-color: #9b9085;
+.dropdown {
+    font-weight: 800;
+    background-color: #705a49;
     color: white;
-    font-family: 'CustomFont', sans-serif;
     font-size: 24px;
-    border: 1px solid white;
-    border-radius: 8px;
+    border: 0;
+    border-radius: 2px;
     padding: 10px 20px;
-    cursor: pointer;
 }
 
 .results-section {
-    background-color: #2d5357; /* Dark teal background for results */
     padding: 40px 20px;
 }
 
@@ -69,49 +107,67 @@ body, html {
 }
 
 .item-card {
-    display: flex;
+    display: grid;
+    grid-template-columns: 256px auto;
     align-items: center;
-    max-width: 900px;
+    max-width: fit-content;
     margin: 0 auto 25px auto;
-    background-color: #63ac94; /* Teal card header */
-    border-radius: 8px;
-    border: 1px solid white;
-    overflow: hidden;
+    filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 4px 8px);
 }
 
 .item-image-container {
-    background-color: #262934;
-    padding: 15px;
+    grid-row: span 2;
+    place-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 200px;
+    width: 200px;
+    background-color: #262934;
+    border: 8px solid white;
+    z-index: 0;
 }
 
 .item-image {
-    width: 100px;
+    width: 128px;
     height: auto;
 }
-
-.item-details {
-    padding: 15px 25px;
-    flex-grow: 1;
+.item-name-container {
+    align-self: end;
+    min-width: 1024px;
+    margin-left: -256px;
+    padding-left: 256px;
+    border-bottom: 1px dashed rgb(234, 218, 185);
+    border-radius: 10px 10px 0 0;
+    background:
+    linear-gradient(0deg, rgba(99, 172, 148, 0.75), rgba(99, 172, 148, 1)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-size: 128px;
 }
 
 .item-name {
-    font-size: 37px;
-    margin: 0 0 10px 0;
+    font-size: 36px;
+    margin: 10px;
+    margin-right: 32px;
 }
 
 .item-zone-container {
-    background-color: #eadab9; /* Light card background */
-    border: 1px solid white;
-    border-radius: 25px;
-    padding: 10px 30px;
-    display: inline-block;
+    align-self: start;
+    min-width: 1024px;
+    margin-left: -256px;
+    padding-left: 256px;
+    min-height: 96px;
+    border-radius: 0 0 64px 10px;
+    border-top: 1px dashed rgb(99, 172, 148);
+    background:
+    linear-gradient(0deg, rgba(234, 218, 185, 0.75), rgba(234, 218, 185, 1)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-size: 128px;
 }
 
 .item-zone {
-    font-size: 48px;
+    font-size: 42px;
     color: #705a49;
-    margin: 0;
+    margin: 10px;
+    margin-right: 32px;
 }
