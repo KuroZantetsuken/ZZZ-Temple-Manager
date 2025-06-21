@@ -16,16 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     function populateDropdowns() {
         const categories = data.categories;
+        const fragment1 = document.createDocumentFragment();
+        const fragment2 = document.createDocumentFragment();
         for (const id in categories) {
             const option1 = new Option(categories[id], id);
             const option2 = new Option(categories[id], id);
-            dropdown1.add(option1);
-            dropdown2.add(option2);
+            fragment1.appendChild(option1);
+            fragment2.appendChild(option2);
         }
+        dropdown1.appendChild(fragment1);
+        dropdown2.appendChild(fragment2);
     }
     function addEventListeners() {
-        dropdown1.addEventListener('change', lookupAndDisplay);
-        dropdown2.addEventListener('change', lookupAndDisplay);
+        dropdown1.addEventListener('change', handleSelectionChange);
+        dropdown2.addEventListener('change', handleSelectionChange);
+    }
+    function handleSelectionChange() {
+        resultsSection.classList.add('fade-out');
+        resultsSection.addEventListener('transitionend', () => {
+            lookupAndDisplay();
+            resultsSection.classList.remove('fade-out');
+        }, { once: true });
     }
     function lookupAndDisplay() {
         const val1 = dropdown1.value;
@@ -48,25 +59,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function displayResults(itemIds) {
         resultsSection.innerHTML = '';
+        const fragment = document.createDocumentFragment();
         itemIds.forEach(id => {
             const item = data.items[id];
             if (item) {
                 const imageUrl = `img/${id}.webp`;
-                const cardHTML = `
-                    <div class="item-card">
-                        <div class="item-image-container">
-                            <img src="${imageUrl}" alt="${item.name}" class="item-image">
-                        </div>
-                        <div class="item-name-container">
-                            <p class="item-name">${item.name}</p>
-                        </div>
-                        <div class="item-zone-container">
-                            <p class="item-zone">Former Research Center ${item.zone}</p>
-                        </div>
+                const card = document.createElement('div');
+                card.className = 'item-card';
+                card.innerHTML = `
+                    <div class="item-image-container">
+                        <img src="${imageUrl}" alt="${item.name}" class="item-image">
+                    </div>
+                    <div class="item-name-container">
+                        <p class="item-name">${item.name}</p>
+                    </div>
+                    <div class="item-zone-container">
+                        <p class="item-zone">Former Research Center ${item.zone}</p>
                     </div>
                 `;
-                resultsSection.innerHTML += cardHTML;
+                fragment.appendChild(card);
             }
         });
+        resultsSection.appendChild(fragment);
     }
 });
