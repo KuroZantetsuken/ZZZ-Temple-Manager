@@ -64,6 +64,7 @@ body {
     background-size: 40px 80px;
 }
 .dropdown-container {
+    flex-direction: row;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,6 +157,9 @@ body {
 }
 .item-zone { font-size: clamp(32px, 6vw, 42px); color: #705a49; margin: 0; }
 @media (min-width: 1024px) {
+    .dropdown-container {
+        flex-direction: row;
+    }
     .results-section {
         grid-template-columns: max-content;
         justify-content: center;
